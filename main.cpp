@@ -93,6 +93,7 @@ char operatorChoice()
     std::cout << "\nChoose an arithmetic operator: ";
     std::cin >> userInput;
     return userInput;
+    
 }
 
 void basicAddition(double x, double y, char operatorType) 
