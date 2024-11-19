@@ -2,13 +2,10 @@
 #include <climits>
 #include <vector>
 
-const std::vector<char> availOperators = {'-', '+', '*', '/'};
+const std::vector<char> availOperators = {'+'};
 const int MAX_TRIES = 4;
 
 void basicAddition(double x, double y, char operatorType);
-void basicMultiplication(double x, double y, char operatorType);
-void basicDivision(double x, double y, char operatorType);
-void basicSubtraction(double x, double y, char operatorType);
 char operatorChoice();
 void getUserInput(double &x, double &y);
 void results(double x, double y, double z, char operatorType);
@@ -35,20 +32,8 @@ int main()
 
         switch (operatorType) 
         {
-            case '*':
-                basicMultiplication(x, y, operatorType);
-                break;
-
             case '+':
                 basicAddition(x, y, operatorType);
-                break;
-
-            case '/':
-                basicDivision(x, y, operatorType);
-                break;
-
-            case '-':
-                basicSubtraction(x, y, operatorType);
                 break;
 
             default:
@@ -100,7 +85,12 @@ void getUserInput(double &x, double &y)
 char operatorChoice()
 {
     char userInput;
-    std::cout << "Choose an arithmetic operator (*, +, /, -): ";
+    std::cout << "Available operators: ";
+    for(auto i: availOperators)
+    {
+        std::cout << i << " ";
+    }
+    std::cout << "\nChoose an arithmetic operator: ";
     std::cin >> userInput;
     return userInput;
 }
@@ -110,26 +100,6 @@ void basicAddition(double x, double y, char operatorType)
     results(x, y, x + y, operatorType);
 }
 
-void basicMultiplication(double x, double y, char operatorType) 
-{
-    results(x, y, x * y, operatorType);
-}
-
-void basicSubtraction(double x, double y, char operatorType) 
-{
-    results(x, y, x - y, operatorType);
-}
-
-void basicDivision(double x, double y, char operatorType) 
-{
-    if (y == 0 || x == 0) 
-    {
-        std::cout << "\n\nERROR: Division by zero is not allowed.\n\n";
-    } else 
-    {
-        results(x, y, x / y, operatorType);
-    }
-}
 
 void sayInvalid(int maxTries) 
 {
