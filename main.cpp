@@ -113,3 +113,4 @@ bool maxTriesChecker(int maxTries)
 {
     return maxTries >= MAX_TRIES;
 }
+
